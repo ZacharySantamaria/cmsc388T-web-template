@@ -3,6 +3,12 @@ version: '3'
 services:
   nodejs:
     #fill out the configuration here
+    build:
+      context: .
+      dockerfile: Dockerfile
+          image: zack_webapp
+          container_name: zack_webapp
+          restart: unless-stopped
     networks:
       - app-network
   
@@ -27,8 +33,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      #fill out your absolute path to your folder here
-      device: /absolute/path/to/web/template/folder
+      device: ~/Document/cmsc388T-web-template
       o: bind
 
 networks:
